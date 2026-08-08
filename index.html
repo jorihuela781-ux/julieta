@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>☯ De Julieta para Lizeth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #060609;
+      --card-bg: rgba(18, 18, 24, 0.75);
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1aa;
+      --accent-white: #ffffff;
+      --accent-pink: #ffb6c1;
+      --glow-pink: rgba(255, 182, 193, 0.35);
+      --glow-white: rgba(255, 255, 255, 0.25);
+      --border-light: rgba(255, 255, 255, 0.12);
+      --border-glow: rgba(255, 255, 255, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 20%, #15111e 0%, #060609 70%);
+      color: var(--text-main);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 25px 15px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: -1;
+      pointer-events: none;
+    }
+    body::before {
+      top: 10%;
+      left: 15%;
+      background: rgba(255, 182, 193, 0.08);
+    }
+    body::after {
+      bottom: 10%;
+      right: 15%;
+      background: rgba(138, 43, 226, 0.08);
+    }
+
+    /* Barra de Navegador Web (Simulación de Link) */
+    .url-bar-container {
+      width: 100%;
+      max-width: 680px;
+      background: rgba(24, 24, 32, 0.85);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .url-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+
+    .url-box {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .url-text {
+      color: var(--accent-pink);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      color: var(--accent-white);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-light);
+      border-radius: 28px;
+      padding: 50px 32px;
+      box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      text-align: center;
+      position: relative;
+    }
+
+    .yin-yang-top {
+      font-size: 3.2rem;
+      margin-bottom: 15px;
+      display: inline-block;
+      filter: drop-shadow(0 0 15px var(--accent-white));
+      animation: spin 16s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: #060609;
+      background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      box-shadow: 0 0 25px var(--glow-white);
+    }
+
+    .subtitle {
+      color: var(--accent-pink);
+      font-size: 1.3rem;
+      margin-bottom: 35px;
+      font-family: 'Alex Brush', cursive;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 10px var(--glow-pink);
+    }
+
+    .poem-title {
+      font-size: 3.2rem;
+      margin: 30px 0 20px 0;
+      filter: drop-shadow(0 0 18px rgba(255, 80, 120, 0.8));
+      animation: heartPulse 2.2s infinite ease-in-out;
+    }
+
+    @keyframes heartPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
+    p {
+      line-height: 2;
+      font-size: 1.02rem;
+      color: #e4e4e7;
+      white-space: pre-line;
+      font-weight: 300;
+    }
+
+    .btn {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-light);
+      padding: 14px 32px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      margin: 10px 8px;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .btn:hover {
+      background: var(--accent-white);
+      color: #060609;
+      border-color: var(--accent-white);
+      box-shadow: 0 0 25px var(--glow-white), 0 0 40px var(--glow-pink);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .arrow-btn {
+      font-size: 1.8rem;
+      padding: 10px 28px;
+      margin-top: 30px;
+      line-height: 1;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .step {
+      display: none;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .step.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .audio-container {
+      margin: 30px 0;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .poem {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      text-align: center;
+      line-height: 2.2;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 35px 28px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 2px solid var(--accent-white);
+      border-bottom: 2px solid var(--accent-white);
+      margin-top: 25px;
+      box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.02);
+    }
+
+    .game-box {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 30px 20px;
+      border-radius: 20px;
+      margin: 25px 0;
+      border: 1px dashed var(--border-glow);
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .word-slot {
+      min-height: 55px;
+      border-bottom: 2px solid var(--accent-white);
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .letters-pool {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tile {
+      background: #181820;
+      border: 1px solid var(--border-light);
+      padding: 11px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .tile:hover {
+      background: #252532;
+      border-color: var(--accent-white);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-white);
+    }
+
+    .tile:active {
+      transform: scale(0.96);
+    }
+
+    .photo-container {
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto 30px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      filter: grayscale(100%) contrast(1.08);
+      border: 1px solid var(--border-glow);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+      transition: all 0.6s ease;
+    }
+
+    .photo-container:hover {
+      filter: grayscale(0%) contrast(1);
+      box-shadow: 0 20px 45px var(--glow-pink);
+      transform: scale(1.01);
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .letter-text {
+      text-align: left;
+      font-size: 1.02rem;
+      line-height: 2;
+      background: rgba(255, 255, 255, 0.015);
+      padding: 32px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    textarea {
+      width: 100%;
+      height: 130px;
+      background: rgba(10, 10, 14, 0.9);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      color: var(--text-main);
+      padding: 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.98rem;
+      resize: none;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent-white);
+      box-shadow: 0 0 20px var(--glow-white);
+      background: #000000;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(4, 4, 6, 0.92);
+      backdrop-filter: blur(12px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      border: 1px solid var(--accent-white);
+      padding: 40px 30px;
+      border-radius: 22px;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 0 50px var(--glow-white), 0 0 30px var(--glow-pink);
+    }
+
+    footer {
+      margin-top: 45px;
+      border-top: 1px solid var(--border-light);
+      padding-top: 28px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    footer p {
+      margin-bottom: 6px;
+    }
+
+    footer a {
+      color: var(--text-main);
+      text-decoration: none;
+      margin: 0 6px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+      color: var(--accent-pink);
+      text-shadow: 0 0 10px var(--glow-pink);
+    }
+
+    .quote {
+      margin-top: 20px;
+      font-style: italic;
+      color: #94949e;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.98rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Dirección Web del Navegador -->
+  <div class="url-bar-container">
+    <div class="url-dots">
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+    </div>
+    <div class="url-box">
+      <span>🔒 <span class="url-text" id="siteUrl">https://jorihuela781-ux.github.io/julieta</span></span>
+      <button class="copy-btn" onclick="copyLink()">📋 Copiar</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Yin Yang Arriba -->
+    <span class="yin-yang-top">☯</span>
+
+    <!-- PASO 1: Inicio -->
+    <div id="step-1" class="step active">
+      <h1>☯ De Julieta para Lizeth</h1>
+      <p class="subtitle">un poco de lo que te quiero decir…</p>
+      
+      <p style="margin-top: 30px; font-weight: 600;">¿Querés saber que siento?</p>
+      <div style="margin-top: 15px;">
+        <button class="btn" onclick="nextStep(2)">Sí</button>
+        <button class="btn" onclick="alert('Opción no disponible 🖤 Intenta presionar Sí.')">No</button>
+      </div>
+    </div>
+
+    <!-- PASO 2: Introducción -->
+    <div id="step-2" class="step">
+      <p>Te dije que quiero algo serio, entonces esto es un poco de lo que haré para demostrarte que te amo…</p>
+      <button class="btn arrow-btn" onclick="nextStep(3)">➔</button>
+    </div>
+
+    <!-- PASO 3: Canción y Poema -->
+    <div id="step-3" class="step">
+      <p style="margin-bottom: 15px;">Primero que nada, quiero dedicarte esta canción:</p>
+      
+      <div class="audio-container">
+        <!-- Reproductor embed de Spotify (Daylight - Taylor Swift) -->
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1fzAuUVbzlhZ1lJAx9PtY6" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+
+      <div class="poem">
+No sé si llamarte estrella, destino o poesía,
+porque todo lo que nombro se parece a tu armonía.
+Sos la luz que, entre mis sombras, voy a aprender a reconocer,
+y ante el brillo de tus ojos, solo quiero permanecer.
+
+Si el mundo fuera un templo, te haría mi oración,
+no por miedo ni por culpa, sino por admiración.
+Y si mi alma fuera un barco perdido en alta mar,
+tu voz sería la brújula que me enseña dónde estar.
+
+Te entrego mis palabras, mis silencios, mi verdad,
+mis sueños más secretos, mi entera voluntad.
+No porque deje de ser quien soy al momento de querer caminar junto a vos,
+sino porque al encontrarte descubriré una parte de mi voz.
+
+Sos mi diosa en este pequeño universo que inventé,
+la razón de tantos versos que jamás pronuncié.
+Y si alguna vez me pierdo buscando dónde ir,
+que sea cerca de tu cielo, donde aprenderé a sentir.
+
+No quiero poseerte, ni encerrarte en mi querer;
+quiero admirar tu esencia y verte siempre florecer.
+Si amar es entregarse sin dejar de ser uno mismo,
+yo te entrego lo que siento, sin convertirlo en abismo.
+
+Porque entre todas las cosas que pudiera elegir,
+hay una que permanece: contemplarte y sonreír.
+Y aunque cambien las estrellas, aunque cambie la estación,
+vas a ser mi eterna diosa dentro de mi corazón.
+      </div>
+
+      <div class="poem-title">🖤</div>
+      <button class="btn arrow-btn" onclick="nextStep(4)">➔</button>
+    </div>
+
+    <!-- PASO 4: Juego de Formar Palabras -->
+    <div id="step-4" class="step">
+      <p>Ordena las palabras para formar la frase especial:</p>
+      
+      <div class="game-box">
+        <div class="word-slot" id="wordSlot"></div>
+        <div class="letters-pool" id="lettersPool"></div>
+      </div>
+
+      <button class="btn" onclick="checkGame()">Verificar</button>
+      <div id="gameSuccess" style="display:none; margin-top:15px;">
+        <p style="color: #ffb6c1; font-weight: 600;">¡Correcto! 🖤</p>
+        <button class="btn arrow-btn" onclick="nextStep(5)">➔</button>
+      </div>
+    </div>
+
+    <!-- PASO 5: Carta Final -->
+    <div id="step-5" class="step">
+      <div class="photo-container">
+        <!-- Foto en Blanco y Negro -->
+        <img src="photo.jpg" alt="Foto">
+      </div>
+
+      <div class="letter-text">
+        <p>Nos conocemos recientemente, lo sé. Pero yo di mi palabra, quiero algo serio, fuerte y duradero. No conozco palabras en vano, no conozco promesas falsas y vacías sin amor. Mi amor demasiado fuerte e intenso, al punto de entregarme por completo a la persona. 
+
+Quiero conocerte, quiero que me conozcas. Quiero tirarme hacía el pozo, quiero aprender a amarte como te gustaría ser amada y arriesgarme, apuesto mi corazón por vos. Y sé que haga lo que haga valdrá la pena.
+Sos una mujer hermosa, me fascinas tanto que ya me imaginé todo con vos.
+
+Esto es un poco de lo que me pone nerviosa decir. Yo te amo, te quiero. Quiero enseñarte que no sos difícil decir amar, que amarte no es complicado porque yo puedo amarte y elegirte cada día. Simplemente ambas nos topamos con personas equivocadas que no sabían amar, pero yo sé que quiero entregártelo todo y lo haré.
+Confía en mi, en mi corazón y en nosotras. 
+Este es el primer detallito chiquito, y vendrán más para recordarte que cada día te amo y te elijo, ¿Si? Conmigo no vas a tener que sobrepensar o estar con malestares, porque daré todo de mi para que te sientas amada con dulzura e intensidad incondicional.</p>
+      </div>
+
+      <!-- Formulario para recibir sus respuestas -->
+      <form id="loveForm" action="https://formspree.io/f/xqaeerqe" method="POST" onsubmit="handleForm(event)" style="margin-top: 25px;">
+        <label for="reply" style="display:block; text-align:left; font-size:0.9rem; color:var(--text-muted); margin-bottom: 5px;">Respuesta…</label>
+        <textarea id="reply" name="message" placeholder="Escribe lo que sientes aquí..." required></textarea>
+        
+        <div>
+          <button type="button" class="btn" onclick="handleReject()">Rechazar amor</button>
+          <button type="submit" class="btn" style="background: var(--accent-white); color:#000;">Aceptar amor</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+      <p>Teléfono: +598 92 475 772</p>
+      <p style="margin: 6px 0;">
+        TikTok: <a href="https://www.tiktok.com/@bxdhism" target="_blank">@bxdhism</a> | 
+        IG: <a href="https://www.instagram.com/jxxeff" target="_blank">@jxxeff</a>
+      </p>
+      <p class="quote">"Nunca dudes de un corazón que sabe sentir y no teme adorar."</p>
+    </footer>
+
+  </div>
+
+  <!-- Modal / Notificación -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h3 id="modalText" style="font-family:'Playfair Display', serif; font-size: 1.4rem;">Su amor ha sido mutuo 🖤</h3>
+      <button class="btn" style="margin-top:20px;" onclick="closeModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    // Función para copiar el enlace
+    function copyLink() {
+      const urlText = document.getElementById('siteUrl').innerText;
+      navigator.clipboard.writeText(urlText);
+      alert("¡Enlace copiado al portapapeles! 🖤");
+    }
+
+    // Navegación entre páginas
+    function nextStep(stepNumber) {
+      document.querySelectorAll('.step').forEach(step => {
+        step.classList.remove('active');
+      });
+      document.getElementById('step-' + stepNumber).classList.add('active');
+    }
+
+    // Lógica del Juego de Palabras: "La Jennie de mi Lisa"
+    const targetPhrase = ["La", "Jennie", "de", "mi", "Lisa"];
+    let currentPool = ["Lisa", "de", "La", "Jennie", "mi"].sort(() => Math.random() - 0.5);
+    let currentSelection = [];
+
+    const wordSlot = document.getElementById('wordSlot');
+    const lettersPool = document.getElementById('lettersPool');
+
+    function renderGame() {
+      wordSlot.innerHTML = '';
+      lettersPool.innerHTML = '';
+
+      currentSelection.forEach((word, index) => {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.innerText = word;
+        tile.onclick = () => deselectWord(index);
+        wordSlot.appendChild(tile);
+      });
+
+      currentPool.forEach((word, index) => {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.innerText = word;
+        tile.onclick = () => selectWord(index);
+        lettersPool.appendChild(tile);
+      });
+    }
+
+    function selectWord(index) {
+      const word = currentPool.splice(index, 1)[0];
+      currentSelection.push(word);
+      renderGame();
+    }
+
+    function deselectWord(index) {
+      const word = currentSelection.splice(index, 1)[0];
+      currentPool.push(word);
+      renderGame();
+    }
+
+    function checkGame() {
+      if (JSON.stringify(currentSelection) === JSON.stringify(targetPhrase)) {
+        document.getElementById('gameSuccess').style.display = 'block';
+      } else {
+        alert("El orden no es el correcto 🤍 Intenta armarlo de nuevo.");
+      }
+    }
+
+    renderGame();
+
+    // Acciones de Botones de Amor
+    function handleReject() {
+      alert("No se permite rechazar este amor 🖤 Proba aceptándolo.");
+    }
+
+    function handleForm(e) {
+      e.preventDefault();
+      const modal = document.getElementById('modal');
+      const text = document.getElementById('reply').value;
+
+      fetch("https://formspree.io/f/xqaeerqe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ respuesta: text, estado: "Aceptó el amor" })
+      }).catch(() => {});
+
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
