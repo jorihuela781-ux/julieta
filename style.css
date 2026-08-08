@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap');
+
+:root {
+  --bg-color: #060609;
+  --card-bg: rgba(18, 18, 24, 0.75);
+  --text-main: #f5f5f7;
+  --text-muted: #a1a1aa;
+  --accent-white: #ffffff;
+  --accent-pink: #ffb6c1;
+  --glow-pink: rgba(255, 182, 193, 0.35);
+  --glow-white: rgba(255, 255, 255, 0.25);
+  --border-light: rgba(255, 255, 255, 0.12);
+  --border-glow: rgba(255, 255, 255, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(circle at 50% 20%, #15111e 0%, #060609 70%);
+  color: var(--text-main);
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 15px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Luces suaves flotando al fondo */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+  pointer-events: none;
+}
+body::before {
+  top: 10%;
+  left: 15%;
+  background: rgba(255, 182, 193, 0.08);
+}
+body::after {
+  bottom: 10%;
+  right: 15%;
+  background: rgba(138, 43, 226, 0.08);
+}
+
+/* Tarjeta Principal (Efecto Cristal Elegante) */
+.container {
+  width: 100%;
+  max-width: 680px;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
+  border-radius: 28px;
+  padding: 50px 32px;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  text-align: center;
+  position: relative;
+}
+
+/* Yin Yang Animado */
+.yin-yang-top {
+  font-size: 3.2rem;
+  margin-bottom: 15px;
+  display: inline-block;
+  filter: drop-shadow(0 0 15px var(--accent-white));
+  animation: spin 16s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Título de Impacto */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #060609;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  box-shadow: 0 0 25px var(--glow-white);
+}
+
+.subtitle {
+  color: var(--accent-pink);
+  font-size: 1.3rem;
+  margin-bottom: 35px;
+  font-family: 'Alex Brush', cursive;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px var(--glow-pink);
+}
+
+.poem-title {
+  font-size: 3.2rem;
+  margin: 30px 0 20px 0;
+  filter: drop-shadow(0 0 18px rgba(255, 80, 120, 0.8));
+  animation: heartPulse 2.2s infinite ease-in-out;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+p {
+  line-height: 2;
+  font-size: 1.02rem;
+  color: #e4e4e7;
+  white-space: pre-line;
+  font-weight: 300;
+}
+
+/* Botones con Brillo y Micro-interacciones */
+.btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+  padding: 14px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: 10px 8px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.btn:hover {
+  background: var(--accent-white);
+  color: #060609;
+  border-color: var(--accent-white);
+  box-shadow: 0 0 25px var(--glow-white), 0 0 40px var(--glow-pink);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.arrow-btn {
+  font-size: 1.8rem;
+  padding: 10px 28px;
+  margin-top: 30px;
+  line-height: 1;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Transiciones Suaves entre Secciones */
+.step {
+  display: none;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.step.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reproductor de Audio */
+.audio-container {
+  margin: 30px 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Poema Delicado */
+.poem {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 2.2;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 35px 28px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 2px solid var(--accent-white);
+  border-bottom: 2px solid var(--accent-white);
+  margin-top: 25px;
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.02);
+}
+
+/* Juego de Palabras */
+.game-box {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 30px 20px;
+  border-radius: 20px;
+  margin: 25px 0;
+  border: 1px dashed var(--border-glow);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.word-slot {
+  min-height: 55px;
+  border-bottom: 2px solid var(--accent-white);
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.letters-pool {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tile {
+  background: #181820;
+  border: 1px solid var(--border-light);
+  padding: 11px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tile:hover {
+  background: #252532;
+  border-color: var(--accent-white);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-white);
+}
+
+.tile:active {
+  transform: scale(0.96);
+}
+
+/* Foto e Imagen con Iluminación */
+.photo-container {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto 30px auto;
+  border-radius: 18px;
+  overflow: hidden;
+  filter: grayscale(100%) contrast(1.08);
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  transition: all 0.6s ease;
+}
+
+.photo-container:hover {
+  filter: grayscale(0%) contrast(1);
+  box-shadow: 0 20px 45px var(--glow-pink);
+  transform: scale(1.01);
+}
+
+.photo-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.letter-text {
+  text-align: left;
+  font-size: 1.02rem;
+  line-height: 2;
+  background: rgba(255, 255, 255, 0.015);
+  padding: 32px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Área de Texto y Formulario */
+textarea {
+  width: 100%;
+  height: 130px;
+  background: rgba(10, 10, 14, 0.9);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  color: var(--text-main);
+  padding: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.98rem;
+  resize: none;
+  margin: 20px 0;
+  transition: all 0.3s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-white);
+  box-shadow: 0 0 20px var(--glow-white);
+  background: #000000;
+}
+
+/* Modal Emergente */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(4, 4, 6, 0.92);
+  backdrop-filter: blur(12px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border: 1px solid var(--accent-white);
+  padding: 40px 30px;
+  border-radius: 22px;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 0 50px var(--glow-white), 0 0 30px var(--glow-pink);
+}
+
+/* Pie de Página */
+footer {
+  margin-top: 45px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 28px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+footer p {
+  margin-bottom: 6px;
+}
+
+footer a {
+  color: var(--text-main);
+  text-decoration: none;
+  margin: 0 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--accent-pink);
+  text-shadow: 0 0 10px var(--glow-pink);
+}
+
+.quote {
+  margin-top: 20px;
+  font-style: italic;
+  color: #94949e;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.98rem;
+}
